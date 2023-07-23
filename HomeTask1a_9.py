@@ -8,6 +8,7 @@ b1 = (np.mean(zp * ks) - np.mean(zp) * np.mean(ks)) / (np.mean(zp ** 2) - np.mea
 print(b1)
 b0 = np.mean(ks) - b1 * np.mean(zp)
 print(b0)
+
 y_pred = b0 + b1 * zp
 r = np.corrcoef(zp, ks)[0, 1]
 print(r)
@@ -17,3 +18,9 @@ plt.xlabel('zp')
 plt.ylabel('ks')
 plt.plot(zp, y_pred)
 plt.show()
+
+x = zp.reshape((len(zp), 1))
+y = ks.reshape((len(ks), 1))
+X = np.hstack([np.ones((len(zp), 1)), x])
+B = np.dot(np.linalg.inv(np.dot(X.T, X)), X.T @ y)
+print(B)
