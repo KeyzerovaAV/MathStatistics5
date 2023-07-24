@@ -7,7 +7,7 @@ def mse_(b0, b1, y = ks, x = zp, n = len(zp)):
     return np.sum((y - (b0 + b1 * x)) ** 2) / n
 
 alpha = 0.00001
-b0 = 0.1
+b0 = 1
 b1 = 0.1
 n = len(zp)
 
